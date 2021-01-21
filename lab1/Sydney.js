@@ -1,4 +1,4 @@
-import Person from './Person.js.js';
+import Person from './Person.js';
 
 
 class Sydney extends Person {
