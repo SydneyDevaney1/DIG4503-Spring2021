@@ -1,0 +1,20 @@
+{
+    "items": [
+        {
+            "title": "Bananas",
+            "content": "We need 7 bananas"
+        },
+        {
+            "title": "Grapes",
+            "content": "Please get green grapes"
+        },
+        {
+            "title": "Apples",
+            "content": "Purchase 5 apples"
+        },
+        {
+            "title": "Strawberries",
+            "content":"2 containers of strawberries"
+        }
+    ]
+  }
