@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/SydneyDevaney1/DIG4503-Spring2021#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "example3": "^1.0.0"
   }
 }
