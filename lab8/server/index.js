@@ -2,7 +2,7 @@ import Express from 'express';
 import CORS from 'cors';
 
 const App = Express();
-const port = 45040;
+const port = 45030;
 
 App.use(CORS());
 

@@ -8,7 +8,7 @@ function Add() {
         
     function addName() {
     
-    Axios.put("http://localhost:45040/people/" + search)
+    Axios.put("http://localhost:45030/people/" + search)
           .then((response) => {
              console.log(response.data)
           })

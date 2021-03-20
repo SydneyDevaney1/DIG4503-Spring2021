@@ -7,7 +7,7 @@ function Search() {
     //const [searchResults, setSearchResults] = useState([]);
 
     function searchNames () {
-        Axios.get("http://localhost:45040/people/" + search)
+        Axios.get("http://localhost:45030/people/" + search)
         .then((response) => {
           console.log(response.data);
           //setSearchResults(response.data.search);
