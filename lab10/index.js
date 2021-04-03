@@ -2,7 +2,7 @@ import Express from 'express';
 import Database from './Database.js';
 
 const App = Express();
-const port = 45035;
+const port = 45030;
 const data = new Database();
 data.connect();
 
