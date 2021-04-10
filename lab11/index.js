@@ -1,10 +1,12 @@
 import Express from 'express';
 import Database from './Database.js';
+import CORS from 'cors';
 
 const App = Express();
 const port = 45040;
 //Allows us tp use request bosdies and translates it our of JSON
 App.use(Express.json());
+App.use(CORS());
 
 //Creating new Database object
 const db = new Database();

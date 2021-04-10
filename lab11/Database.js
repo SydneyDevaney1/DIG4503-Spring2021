@@ -49,7 +49,7 @@ async readOne(ISBN){
 }
 
 async readMany(){
-    await this.collection.readMany({
+    if (this.collection != null) await this.collection.readMany({
 
     })
 }
