@@ -10,7 +10,7 @@ const[description, setDescription] = useState("");
 
 
     const deleteBook = async() => {
-        const response = await Axios.delete("http://localhost:45040/books/" + ISBN, {
+        const response = await Axios.delete("http://localhost:45030/books/" + ISBN, {
             title:  title,
             author: author,
             description: description

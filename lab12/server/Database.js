@@ -43,8 +43,8 @@ async readOne(ISBN){
 
         return {result};
     }
-    else{
-        return {book: "not found"};
+    else {
+        return {result: "not found"};
     }
 }
 
