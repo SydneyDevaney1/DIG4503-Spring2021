@@ -1,6 +1,6 @@
 
 import CreatePart from './components/CreatePart';
-import DeleteBook from './DeleteBook';
+import DeleteBook from './components/DeleteBook';
 
 function App() {
   return (
