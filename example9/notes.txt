@@ -15,3 +15,39 @@ Resource Archetypes:
 -Field(title, rating, review, id)  <-added id to make it unique
 -Document (studio)
 -Collection (studios)
+
+April 20 
+Example:
+Various machine parts where each part has a titla, SKU, description
+
+Database Perspective:
+-Fields: title, SKU, description
+-Document
+-Collection
+-Methods:
+    -connect
+    -close
+    -createOne() -> insertOne()
+    -readOne() -> findOne()
+    -updateOne() -> updateOne()
+    -deleteOne() -> deleteOne()
+
+Server Perspective:
+-Fields: title, SKU, description
+-Document:(request parameter)
+-CRUD
+    -PUT (Create): App.put()
+    -GET (Read): App.get()
+    -PATCH (Update): App.patch()
+    -DELETE (Delete): App.delete()
+ -Routes
+    - PUT: "/parts/:sku" (Request body)  
+    - GET: "/parts/:sku" ()
+    - PATCH "parts/:sku" (Request body)
+    - DELETE "parts/:sku"
+Client Perspective:
+-CRUD
+    -PUT (Create): Axios.put() 
+    _GET (Read): Axios.get()
+    -PATCH (Update): Axios.patch()
+    -DELETE (Delete): Axios.delete()   
