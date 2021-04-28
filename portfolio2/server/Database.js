@@ -1,54 +1,82 @@
 import MongoClient from 'mongodb';
 
-
-const url = "mongodb+srv://SydneyDevaney:YHfpLjWRea4J3qm5@cluster0.yuzwq.mongodb.net";
-
+const url = "mongodb+srv://SydneyDevaney:YHfpLjWRea4J3qm5@cluster0.yuzwq.mongodb.net"
 
 class Database {
-    constructor() {
-        // Setup a default value for connection
+    constructor(){
         this.connection = null;
-        // Setup a default value for database
         this.database = null;
-        // Setup a default value for collection
         this.collection = null;
+
     }
-    async connect() {
-        // Wait for the connect() method to finish.
-        this.connection = await MongoClient.connect(url, { useUnifiedTopology: true });
-        // Select a database.
-        this.database = this.connection.db("portfolio2");
-        // Select a collection.
-        this.collection = this.database.collection("SydneyDevaney"); 
+
+    async connect(database, collection){
+        this.connection = await MongoClient.connect(url);
+        this.database = this.connection.db(database);
+        this.collection = this.database.collection(collection);
     }
-async createOne(name, rating) {
-    let object = {
-        "name": name,
-        "rating": rating
-        
-    }
+
+async createOne(rank, coffee, location, rating) {
+
+    
     if (this.collection != null) {
-        return await this.collection.insertOne(object)
+         const result = await this.collection.insertOne({
+
+         "rank":rank,   
+         "coffee":coffee,
+         "location":location,
+         "rating":rating
+        
+        });
+
+        return {result};
+    } else{
+        return null;
     }
 }   
 
 
-async readOne(){
-    let results = await this.collection.findOne({title: query});
-    if (results != null) {
-        return results;
+async readOne(rank){
+    if (this.collection != null) {
+        const result = await this.collection.findOne({
+            "rank": rank });
+
+        return {result};
     }
-    else{
-        return {book: "not found"};
+    else {
+        return {result: "not found"};
     }
 }
 
+async readMany(){
+    if (this.collection != null) await this.collection.readMany({
 
-    close() {
-        if(this.collection != null) {
-          this.connection.close();
-        }
-      }
+    })
+}
+
+async updateOne(rank, coffee, location, rating){
+    if (this.collection != null) {
+        const result = await this.collection.updateOne({"rank": rank}, 
+        {$set: {"coffee": coffee, "location": location, "rating": rating} });
+        
+        return{"coffee": coffee, "location": location, "rating":rating};
+    }else{
+        return null;
+
     }
+}
 
-    export default Database;
+async deleteOne(rank){
+    if (this.collection != null) {
+        const result = await this.collection.deleteOne({"rank": rank});
+        return{"Coffee shops": result.deletedCount};
+    }else {
+        return {"Coffee shops deleted": 0};
+    }
+}
+close(){
+
+    }
+};
+
+export default Database;

@@ -1,43 +1,83 @@
 import Express from 'express';
 import Database from './Database.js';
+import CORS from 'cors';
 
 const App = Express();
-const port = 45035;
-const data = new Database();
-data.connect();
-
+const port = 45040;
+//Allows us tp use request bosdies and translates it our of JSON
 App.use(Express.json());
+App.use(CORS());
 
-App.put("portfolio2/:SydneyDevaney", (req, res) => {
-    res.json({
-        let ,
-        requestParameter: req.params.books
-    });
-});
+//Creating new Database object
+const db = new Database();
+//Database.connect()
+db.connect("portfolio2", "SydneyDevaney");
 
-App.get("portfolio2/:", (req, res) => {
+//PUT (App.put)-> Database.createOne() -> collections.insertOne()
+App.put("/shops/:rank", async (req, res) => {
+    
+    //Request parameter ID
+    const rank = req.params.rank;
+
+    //Request body properties
+    const coffee = req.body.coffee;
+    const location = req.body.location;
+    const rating = req.body.rating;
+
+
+    const result = await db.createOne(rank, coffee, location, rating);
+    res.json(result);
+
+   
+     
+  // res.json({
+       // ISBN: ISBN,
+       // title: title,
+       // author: author,
+        //description: description,
+   //})
     
 });
 
-App.post("portfolio2/search", (req, res) => {
-    res.json({
-        URLParameters: req.query
-    });    
+//GET (App.get)->Database.readOne() -> collections. findOne()
+App.get("/shops/:ISBN", async (req, res) => {
+    const rank = req.params.rank;
+
+    const result = await db.readOne(ISBN);
+
+    res.json(result);
+    //const title  = req.body.title;
+    //const author = req.body.author;
+    //const description = req.body.description;
+
+
 });
 
-App.patch("portfolio2/:", (req, res) => {
 
+//PATCH (App.patch)-> Database.updateOne() -> collections.updateOne()
+App.patch("/shops/:rank", async (req, res) => {
+    const rank = req.params.rank;
 
-    res.json({
-        body: req.body,
-        requestParameter: req.params.team
-    });
+     //Request body properties
+     const coffee = req.body.coffee;
+     const location = req.body.location;
+     const rating = req.body.rating;
+
+    const result = await db.updateOne(rank, coffee, location, rating);
+     
+    res.json(result);
+ 
 });
 
-App.delete("portfolio2/:", (req, res) => {
-    
+//DELETE (App.delete)->Database.deleteOne() -> collection.deleteOne()
+App.delete("/shops/:rank", async (req, res) => {
+    //Request parameter
+    const rank = req.params.rank;
+   
+    //Talk to db code
+    const result = await db.deleteOne(rank);
+
+    res.json(result);
 });
 
-App.listen(port), () => {
-    console.log("server running");
-};
+App.listen(port);
