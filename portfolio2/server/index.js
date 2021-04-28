@@ -40,10 +40,10 @@ App.put("/shops/:rank", async (req, res) => {
 });
 
 //GET (App.get)->Database.readOne() -> collections. findOne()
-App.get("/shops/:ISBN", async (req, res) => {
+App.get("/shops/:rank", async (req, res) => {
     const rank = req.params.rank;
 
-    const result = await db.readOne(ISBN);
+    const result = await db.readOne(rank);
 
     res.json(result);
     //const title  = req.body.title;
