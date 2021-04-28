@@ -47,7 +47,9 @@ const[rating, setRating] = useState("");
             
             <br></br>
             <button onClick = {() => {patchCoffee()}}>Update Coffee Shop</button>
-            
+            {
+            <p> Updated: {rank} {coffee} {location} {rating}</p>
+        }
         </div>
     );
 

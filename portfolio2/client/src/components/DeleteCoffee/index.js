@@ -45,6 +45,9 @@ const[rating, setRating] = useState("");
             />
             <br></br>
             <button onClick = {() => {deleteCoffee()}}>Delete Coffee Shop</button>
+            {
+            <p> Deleted: {rank} {coffee} {location} {rating}</p>
+        }
         </div>
     );
 

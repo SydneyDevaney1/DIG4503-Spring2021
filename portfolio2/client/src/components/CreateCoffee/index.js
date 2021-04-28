@@ -46,7 +46,9 @@ const[rating, setRating] = useState("");
             />
             <br></br>
             <button onClick = {() => {putCoffee()}}>Insert Coffee Shop</button>
-
+        {
+            <p> Created: {rank} {coffee} {location} {rating}</p>
+        }
         
        </div>
         
